@@ -1,12 +1,11 @@
 # :book: Futtech Booking System
 
-This system for <a href="https://www.futtech.kalkyokya.tech" target="_blank">Futtech</a> makes it a comprehensive, real-world application containing a robust ```booking platform``` through which users can acquire Futtech's services.<br />
+This system makes <a href="https://www.futtech.kalkyokya.tech" target="_blank">Futtech</a> a comprehensive, real-world application containing a robust ```booking platform``` through which users can acquire Futtech's services.<br />
 It involves a deep dive into full-stack development, focusing on:<br />
 * Backend Systems.
 * Database Design.
 * API Development, and
 * Application Security.
-<br />
 
 ## :mortar_board: Learning results
 
@@ -59,8 +58,8 @@ Few of the important fields each key entities required:
 * <b>User</b>: First and last name as well as an email.
 * <b>Service</b>: A unique name, description and rate.
 * <b>Bookings</b>: A unique identifier, creation date and payment status.
-* <b>Reviews</b>: Owner, review content as well as reviewed service.
 * <b>Payments</b>: Receipt, amount and status.
+* <b>Reviews</b>: Owner, review content as well as reviewed service.
 
 ## :page_with_curl: Feature Breakdown
 
@@ -75,10 +74,11 @@ Few of the important fields each key entities required:
 
 * <b>Authentication</b>: Implemented logic establishing users legitimacy during log ins.
 * <b>Authorization</b>: Ensured users only have access to API endpoints not requiring admin priviledges and other permissions.
-* <b>Rate Limiting</b>: Prevented excessive requests increasing risk of a breakdown. Whether from a malicious actor or a high number of well-intended users.
+* <b>Rate Limiting</b>: Prevented excessive requests increasing risk of a breakdown—whether from a malicious actor or a high number of well-intended users.
 * <b>Cross-Origin Resource Sharing</b>: Mitigated the risk of Cross-Site Request Forgery by only allowing defined origins to make specific HTTP requests, each containing a set of custom headers.
 
 ## :recycle: CI/CD Pipeline
 
-Continuous Integration, Continuous Delivery Pipelines are a set of automated processes meant to safely but quickly move from 'generating code' to deploying it as Software solution. They shorten software development and enable early discovery of buggy code before deployment to other environments such as production.<br />
-Whenever new lines of code were added, they got thoroughly tested before integration in the codebase and deployment. This guaranteed quality.
+Continuous Integration, Continuous Delivery Pipelines are a set of automated processes meant to safely but quickly move from 'generating code' to deploying it as Software solution. They shorten software development and enable early discovery of buggy code before deployment to other environments, such as production.<br />
+Whenever new lines of code were added, they were thoroughly tested before integration in the codebase and deployment.<br />
+This guaranteed quality.
