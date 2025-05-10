@@ -81,6 +81,8 @@
 ## Indexing
 * Primary Keys: Indexed automatically.
 * Additional Indexes:
-  	     * email in the User table.
-  	     * service_id in the Service and Booking tables.
-  	     * booking_id in the Booking and Payment tables.
+```
+* email in the User table.
+* service_id in the Service and Booking tables.
+* booking_id in the Booking and Payment tables.
+```
