@@ -1,7 +1,7 @@
 -- SQL queries to define the database schema
 
 CREATE TABLE User (
-       user_id INTEGER,
+       user_id INTEGER AUTO_INCREMENT,
        PRIMARY KEY (user_id),
        first_name VARCHAR(50) NOT NULL,
        last_name VARCHAR(50) NOT NULL,
@@ -13,22 +13,22 @@ CREATE TABLE User (
        created_at TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE Property (
-       property_id INTEGER,
-       PRIMARY KEY (property_id),
+CREATE TABLE Service (
+       service_id INTEGER AUTO_INCREMENT,
+       PRIMARY KEY (service_id),
        FOREIGN KEY (host_id) REFERENCES user(user_id),
-       property_name VARCHAR(50) NOT NULL,
+       service_name VARCHAR(50) NOT NULL,
        description VARCHAR(260) NOT NULL,
        location VARCHAR(50) NOT NULL,
-       pricepernight DECIMAL(10, 3) NOT NULL,
+       pricepersession DECIMAL(10, 3) NOT NULL,
        created_at TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
        updated_at TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP
 );
 
 CREATE TABLE Booking (
-       booking_id INTEGER,
+       booking_id INTEGER AUTO_INCREMENT,
        PRIMARY KEY (booking_id),
-       FOREIGN KEY (property_id) REFERENCES Property(property_id),
+       FOREIGN KEY (service_id) REFERENCES Service(service_id),
        FOREIGN KEY (user_id) REFERENCES User(user_id),
        start_date DATE NOT NULL,
        end_date DATE NOT NULL,
@@ -38,18 +38,18 @@ CREATE TABLE Booking (
 );
 
 CREATE TABLE Payment (
-       payment_id INTEGER,
+       payment_id INTEGER AUTO_INCREMENT,
        PRIMARY KEY (payment_id),
        FOREIGN KEY (booking_id) REFERENCES Booking(booking_id),
        amount DECIMAL(10, 3) NOT NULL,
        payment_date TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
-       payment_method ENUM(credit_card, paypal, stripe) NOT NULL
+       payment_method ENUM(mpesa, credit_card, paypal, stripe) NOT NULL
 );
 
 CREATE TABLE Review (
-       review_id INTEGER,
+       review_id INTEGER AUTO_INCREMENT,
        PRIMARY KEY (review_id),
-       FOREIGN KEY (property_id) REFERENCES Property(property_id),
+       FOREIGN KEY (service_id) REFERENCES Service(service_id),
        FOREIGN KEY (user_id) REFERENCES User(user_id),
        rating INTEGER NOT NULL,
        CHECK (rating >= 1 AND rating <= 5),
@@ -58,7 +58,7 @@ CREATE TABLE Review (
 );
 
 CREATE TABLE Message (
-       message_id INTEGER,
+       message_id INTEGER AUTO_INCREMENT,
        PRIMARY KEY (message_id),
        FOREIGN KEY (sender_id) REFERENCES User(user_id),
        FOREIGN KEY (recipient_id) REFERENCES User(user_id),
@@ -66,16 +66,16 @@ CREATE TABLE Message (
        sent_at TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP
 );
 
--- Creating an index on the Usern Property, Booking and Payment tables
+-- Indexing the User, Service, Booking and Payment tables
 
 CREATE INDEX idx_email
 ON User (email);
 
-CREATE INDEX idx_property_id
-ON Property (property_id);
+CREATE INDEX idx_service_id
+ON Service (service_id);
 
-CREATE INDEX idx_property_id
-ON Booking (property_id);
+CREATE INDEX idx_service_id
+ON Booking (service_id);
 
 CREATE INDEX idx_booking_id
 ON Booking (booking_id);
