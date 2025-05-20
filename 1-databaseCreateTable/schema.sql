@@ -18,7 +18,7 @@ CREATE TABLE Service (
        PRIMARY KEY (service_id),
        FOREIGN KEY (host_id) REFERENCES user(user_id),
        service_name VARCHAR(50) NOT NULL,
-       description VARCHAR(260) NOT NULL,
+       description VARCHAR(255) NOT NULL,
        location VARCHAR(50) NOT NULL,
        pricepersession DECIMAL(10, 3) NOT NULL,
        created_at TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
@@ -53,7 +53,7 @@ CREATE TABLE Review (
        FOREIGN KEY (user_id) REFERENCES User(user_id),
        rating INTEGER NOT NULL,
        CHECK (rating >= 1 AND rating <= 5),
-       comment VARCHAR(260),
+       comment VARCHAR(255),
        created_at TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -62,7 +62,7 @@ CREATE TABLE Message (
        PRIMARY KEY (message_id),
        FOREIGN KEY (sender_id) REFERENCES User(user_id),
        FOREIGN KEY (recipient_id) REFERENCES User(user_id),
-       message_body VARCHAR(260) NOT NULL,
+       message_body VARCHAR(255) NOT NULL,
        sent_at TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP
 );
 
